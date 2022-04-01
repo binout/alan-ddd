@@ -1,0 +1,16 @@
+= Alan Tech Talk - Domain Driven Design
+
+Slides for Alan Tech Talk about DDD
+
+== Tools
+
+Based on https://github.com/asciidoctor/asciidoctor-reveal.js
+
+Pre-requisites:: npm
+
+.Generate HTML slides
+[source]
+----
+npm install
+npm run build
+----

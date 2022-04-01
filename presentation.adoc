@@ -1,0 +1,42 @@
+= Domain Driven Design
+:source-highlighter: highlightjs
+:revealjs_theme: white
+:revealjs_history: true
+:revealjs_plugin_pdf: enabled
+:revealjs_plugin_highlight: enabled
+:revealjs_progress: true
+:customcss: custom.css
+:data-uri:
+:icons: font
+
+== The Blue Book 
+
+[quote]
+====
+Tackling Complexity in the Heart of Software
+====
+Eric Evans, 2003
+
+image::images/blue-book.png[]
+
+== DDD quickly
+
+image::images/DDDViteFait.png[]
+
+https://www.infoq.com/fr/minibooks/domain-driven-design-quickly
+
+== DDD vs CRUD
+
+image::images/twitter-cyriux.png[]
+
+== Why DDD ?
+
+* 🤝 Better understand and communicate with your business
+* 🤯 Decrease accidental complexity to focus on business complexity
+* 😎 Master the complexity and improve maintenability
+
+== Complexity
+
+image::images/complexity.png[]
+
+https://www.lilobase.me/certaines-complexites-sont-plus-utiles-que-dautres/
