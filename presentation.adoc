@@ -1,4 +1,4 @@
-= Domain Driven Design
+= Domain Driven Design 
 :source-highlighter: highlightjs
 :revealjs_theme: white
 :revealjs_history: true
@@ -8,6 +8,7 @@
 :customcss: custom.css
 :data-uri:
 :icons: font
+💚 Alan Tech Talk 💚
 
 == The Blue Book 
 
@@ -21,9 +22,10 @@ image::images/blue-book.png[]
 
 == DDD Quickly
 
-image::images/DDDViteFait.png[]
-
+😅 ~100 pages vs 560 pages
 https://www.infoq.com/fr/minibooks/domain-driven-design-quickly
+
+image::images/DDDViteFait.png[]
 
 == What's DDD ?
 
@@ -44,61 +46,129 @@ image::images/twitter-cyriux.png[]
 
 == Complexity
 
+https://www.lilobase.me/certaines-complexites-sont-plus-utiles-que-dautres/
+
 image::images/complexity.png[]
 
-https://www.lilobase.me/certaines-complexites-sont-plus-utiles-que-dautres/
 
 == Strategic & Tactical patterns
 
-image::images/patterns.jpg[]
+image::images/patterns.png[]
 
 == Ubiquitous Language
 
-TODO
+* 🤝 Build a common and rigorous language between developers and business experts
+* 🥸 As the team better understands their business, it could evolve 
+* 😇 You should align your code naming (class, variables, ...) with the ubiquitous Language
 
 == Domain model
 
-* Entity
-* Value Object
+* 🤯 The `domain` is the problem 
+* 😎 The `model` is the solution
+* ❌ Not a database model, not a UML model
+* 📚 Object oriented model based on `Entity`, `ValueObject` and `Aggregate`
 
 == Entity
 
-TODO
+* Is an object defined by its identity
+* Has a lifecycle (created, updated, deleted)
+* Has attributes that change over time
+
+== Entity - Example
+
+Let's define a `Contract`
+
+image::images/entity.png[]
+
 
 == Value Object
 
-TODO
+* Is an object with no identity
+* Is defined by its immutable attributes
+* Can be shared between identities
+* 🤫 It's an immutable dataclass
+
+== Value Object - Example
+
+Let's introduce a `Period` and use it in `Contract`
+
+image::images/value-object.png[]
+
+== Entity vs Value Object
+
+image::images/entity-vs-value-object.png[]
 
 == Aggregate
 
-TODO
+* Is a cluster of domain objects that can be treated as a **single unit** (= same transaction)
+* Has one root entity
+* All references from other aggregates should reference the root, not the sub entities.
 
 == Aggregates
 
 image::images/aggregates.png[]
 
+== Value Aggregates - Example 1
+
+[source, python]
+----
+def add_contract_to_company(company, reference, start_date)
+----
+
+image::images/aggregate_1.png[]
+
+== Value Aggregates - Example 2
+
+[source, python]
+----
+def create_contract(company_id, reference, start_date)
+----
+
+image::images/aggregate_2.png[]
+
 == Repository
 
-TODO
+* Represents a persistent collection of entities
+* One repository per root aggregate
+* Is **not** a DAO (Data Access Object)
 
-== Layered Architecture
+== Repository - Example
 
-[quote]
-====
-Hexagonal Architecture - Ports & Adapters
-====
-Alistair Cockburn
+[source, python]
+----
+class Companies:
+    def get_company(company_id) -> Optional[Company]:
+        pass
+   
+    def add_company(company) -> uuid:
+        pass
 
+    def remove_company(company_id):
+        pass
+----
+
+== Scaling DDD
+
+image::images/bounded-context.png[]
+
+== DDD & Architecture
+
+image::images/architecture.png[]
+
+== Hexagonal Architecture
+
+Alistair Cockburn, 2005
+  
 image::images/ddd-hexagonal.png[]
 
 == Hexagonal dependencies
 
 image::images/hexagonal.png[]
 
-== Scaling DDD - Bounded Context
+== I can talk DDD for hours...🤣
 
-image::images/bounded-context.png[]
+* 👨‍🏫 Domain Model: `Entity`, `Value Object` organized by `Aggregates`
+* 🧳 `Repository` to handle collection of root `Aggregates`
+* ⬢ `Hexagonal architecture` to isolate domain model from technical stuff
 
-== DDD at Alan?
-
-TODO
+❓ Do you think we can use some DDD patterns for Alan codebase? 
