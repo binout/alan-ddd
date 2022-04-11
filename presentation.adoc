@@ -8,7 +8,7 @@
 :customcss: custom.css
 :data-uri:
 :icons: font
-💚 Alan Tech Talk 💚
+💚 Alan Tech Talk #23 💚
 
 == The Blue Book 
 
