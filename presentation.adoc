@@ -110,19 +110,9 @@ image::images/aggregates.png[]
 
 == Value Aggregates - Example 1
 
-[source, python]
-----
-def add_contract_to_company(company, reference, start_date)
-----
-
 image::images/aggregate_1.png[]
 
 == Value Aggregates - Example 2
-
-[source, python]
-----
-def create_contract(company_id, reference, start_date)
-----
 
 image::images/aggregate_2.png[]
 
@@ -147,9 +137,32 @@ class Companies:
         pass
 ----
 
-== Scaling DDD
+== Show me some code
+
+.One Aggregate
+[source, python]
+----
+def add_contract_to_company(
+        company_id, reference, start_date) -> Contract:
+    company = companies.get_company(company_id)
+    contract = company.add_contract(reference, start_date)
+    return contract
+----
+
+.Two Aggregates
+[source, python]
+----
+def create_contract(
+        company_id, reference, start_date) -> Contract:
+    contract = Contract(company_id, reference, start_date)
+    contracts.add_contract(contract)
+    return contract
+----
+
+== Scaling DDD - https://github.com/alan-eu/Topics/issues/15430[#15430]
 
 image::images/bounded-context.png[]
+
 
 == DDD & Architecture
 
@@ -167,8 +180,13 @@ image::images/hexagonal.png[]
 
 == I can talk DDD for hours...🤣
 
+* 🗣 Ubiquitous Langage
 * 👨‍🏫 Domain Model: `Entity`, `Value Object` organized by `Aggregates`
 * 🧳 `Repository` to handle collection of root `Aggregates`
 * ⬢ `Hexagonal architecture` to isolate domain model from technical stuff
+
+== Alan & DDD
+
+🍿 DDD and https://github.com/alan-eu/Topics/discussions/13280[#13280] - Moving towards a product# architecture 
 
 ❓ Do you think we can use some DDD patterns for Alan codebase? 
